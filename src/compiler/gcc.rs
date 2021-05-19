@@ -330,12 +330,6 @@ pub fn preprocess<T>(creator: &T,
         Language::ObjectiveCxx => "objective-c++",
     };
     let mut cmd = creator.clone().new_command_sync(executable);
-    match kind {
-        CCompilerKind::ClangHIP => {
-            cmd.arg("--cuda-host-only");
-            }
-        _ => {}
-    }
 
     cmd.arg("-x").arg(language)
         .arg("-E")
